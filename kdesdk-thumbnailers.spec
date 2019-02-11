@@ -5,21 +5,21 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdesdk-thumbnailers
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kdesdk-thumbnailers-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kdesdk-thumbnailers-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kdesdk-thumbnailers-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kdesdk-thumbnailers-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kdesdk-thumbnailers-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kdesdk-thumbnailers-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
-Requires: kdesdk-thumbnailers-lib
-Requires: kdesdk-thumbnailers-data
-Requires: kdesdk-thumbnailers-license
-Requires: kdesdk-thumbnailers-locales
+Requires: kdesdk-thumbnailers-data = %{version}-%{release}
+Requires: kdesdk-thumbnailers-lib = %{version}-%{release}
+Requires: kdesdk-thumbnailers-license = %{version}-%{release}
+Requires: kdesdk-thumbnailers-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -35,8 +35,8 @@ data components for the kdesdk-thumbnailers package.
 %package lib
 Summary: lib components for the kdesdk-thumbnailers package.
 Group: Libraries
-Requires: kdesdk-thumbnailers-data
-Requires: kdesdk-thumbnailers-license
+Requires: kdesdk-thumbnailers-data = %{version}-%{release}
+Requires: kdesdk-thumbnailers-license = %{version}-%{release}
 
 %description lib
 lib components for the kdesdk-thumbnailers package.
@@ -59,26 +59,26 @@ locales components for the kdesdk-thumbnailers package.
 
 
 %prep
-%setup -q -n kdesdk-thumbnailers-18.08.0
+%setup -q -n kdesdk-thumbnailers-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535196767
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549865587
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535196767
+export SOURCE_DATE_EPOCH=1549865587
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kdesdk-thumbnailers
-cp COPYING %{buildroot}/usr/share/doc/kdesdk-thumbnailers/COPYING
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/doc/kdesdk-thumbnailers/cmake_modules_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers
+cp COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/COPYING
+cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/cmake_modules_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
 popd
@@ -97,9 +97,9 @@ popd
 /usr/lib64/qt5/plugins/pothumbnail.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kdesdk-thumbnailers/COPYING
-/usr/share/doc/kdesdk-thumbnailers/cmake_modules_COPYING-CMAKE-SCRIPTS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kdesdk-thumbnailers/COPYING
+/usr/share/package-licenses/kdesdk-thumbnailers/cmake_modules_COPYING-CMAKE-SCRIPTS
 
 %files locales -f pothumbnail.lang
 %defattr(-,root,root,-)
