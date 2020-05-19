@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdesdk-thumbnailers
-Version  : 20.04.0
-Release  : 20
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/kdesdk-thumbnailers-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kdesdk-thumbnailers-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kdesdk-thumbnailers-20.04.0.tar.xz.sig
-Summary  : Plugins for the thumbnailing system
+Version  : 20.04.1
+Release  : 21
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
 Requires: kdesdk-thumbnailers-data = %{version}-%{release}
@@ -19,6 +19,7 @@ Requires: kdesdk-thumbnailers-license = %{version}-%{release}
 Requires: kdesdk-thumbnailers-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -59,36 +60,35 @@ locales components for the kdesdk-thumbnailers package.
 
 
 %prep
-%setup -q -n kdesdk-thumbnailers-20.04.0
-cd %{_builddir}/kdesdk-thumbnailers-20.04.0
+%setup -q -n kdesdk-thumbnailers-20.04.1
+cd %{_builddir}/kdesdk-thumbnailers-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587680863
+export SOURCE_DATE_EPOCH=1589851348
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587680863
+export SOURCE_DATE_EPOCH=1589851348
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers
-cp %{_builddir}/kdesdk-thumbnailers-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-cp %{_builddir}/kdesdk-thumbnailers-20.04.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdesdk-thumbnailers-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/kdesdk-thumbnailers-20.04.1/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
