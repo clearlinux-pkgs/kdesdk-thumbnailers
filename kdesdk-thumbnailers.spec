@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdesdk-thumbnailers
-Version  : 20.04.1
-Release  : 21
-URL      : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kdesdk-thumbnailers-20.04.1.tar.xz.sig
+Version  : 20.04.2
+Release  : 22
+URL      : https://download.kde.org/stable/release-service/20.04.2/src/kdesdk-thumbnailers-20.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.2/src/kdesdk-thumbnailers-20.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.2/src/kdesdk-thumbnailers-20.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
@@ -60,15 +60,15 @@ locales components for the kdesdk-thumbnailers package.
 
 
 %prep
-%setup -q -n kdesdk-thumbnailers-20.04.1
-cd %{_builddir}/kdesdk-thumbnailers-20.04.1
+%setup -q -n kdesdk-thumbnailers-20.04.2
+cd %{_builddir}/kdesdk-thumbnailers-20.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589851348
+export SOURCE_DATE_EPOCH=1591904741
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -84,11 +84,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1589851348
+export SOURCE_DATE_EPOCH=1591904741
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers
-cp %{_builddir}/kdesdk-thumbnailers-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-cp %{_builddir}/kdesdk-thumbnailers-20.04.1/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdesdk-thumbnailers-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/kdesdk-thumbnailers-20.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
