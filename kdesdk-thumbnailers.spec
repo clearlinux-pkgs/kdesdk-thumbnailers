@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdesdk-thumbnailers
-Version  : 21.04.2
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kdesdk-thumbnailers-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kdesdk-thumbnailers-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kdesdk-thumbnailers-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kdesdk-thumbnailers-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kdesdk-thumbnailers-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kdesdk-thumbnailers-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0
+License  : BSD-3-Clause GPL-2.0 GPL-3.0
 Requires: kdesdk-thumbnailers-data = %{version}-%{release}
 Requires: kdesdk-thumbnailers-lib = %{version}-%{release}
 Requires: kdesdk-thumbnailers-license = %{version}-%{release}
@@ -60,35 +60,38 @@ locales components for the kdesdk-thumbnailers package.
 
 
 %prep
-%setup -q -n kdesdk-thumbnailers-21.04.2
-cd %{_builddir}/kdesdk-thumbnailers-21.04.2
+%setup -q -n kdesdk-thumbnailers-21.08.1
+cd %{_builddir}/kdesdk-thumbnailers-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623380300
+export SOURCE_DATE_EPOCH=1630909070
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623380300
+export SOURCE_DATE_EPOCH=1630909070
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers
-cp %{_builddir}/kdesdk-thumbnailers-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-cp %{_builddir}/kdesdk-thumbnailers-21.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdesdk-thumbnailers-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kdesdk-thumbnailers-21.08.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kdesdk-thumbnailers-21.08.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/kdesdk-thumbnailers-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kdesdk-thumbnailers-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
@@ -108,8 +111,10 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdesdk-thumbnailers/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-/usr/share/package-licenses/kdesdk-thumbnailers/ff3ed70db4739b3c6747c7f624fe2bad70802987
+/usr/share/package-licenses/kdesdk-thumbnailers/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+/usr/share/package-licenses/kdesdk-thumbnailers/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/kdesdk-thumbnailers/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 
 %files locales -f pothumbnail.lang
 %defattr(-,root,root,-)
