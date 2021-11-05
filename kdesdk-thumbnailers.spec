@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdesdk-thumbnailers
-Version  : 21.08.2
-Release  : 33
-URL      : https://download.kde.org/stable/release-service/21.08.2/src/kdesdk-thumbnailers-21.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.2/src/kdesdk-thumbnailers-21.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.2/src/kdesdk-thumbnailers-21.08.2.tar.xz.sig
+Version  : 21.08.3
+Release  : 34
+URL      : https://download.kde.org/stable/release-service/21.08.3/src/kdesdk-thumbnailers-21.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.3/src/kdesdk-thumbnailers-21.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.3/src/kdesdk-thumbnailers-21.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -60,15 +60,15 @@ locales components for the kdesdk-thumbnailers package.
 
 
 %prep
-%setup -q -n kdesdk-thumbnailers-21.08.2
-cd %{_builddir}/kdesdk-thumbnailers-21.08.2
+%setup -q -n kdesdk-thumbnailers-21.08.3
+cd %{_builddir}/kdesdk-thumbnailers-21.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634407013
+export SOURCE_DATE_EPOCH=1636070552
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -84,14 +84,14 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634407013
+export SOURCE_DATE_EPOCH=1636070552
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers
-cp %{_builddir}/kdesdk-thumbnailers-21.08.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kdesdk-thumbnailers-21.08.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/kdesdk-thumbnailers-21.08.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/kdesdk-thumbnailers-21.08.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kdesdk-thumbnailers-21.08.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kdesdk-thumbnailers-21.08.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kdesdk-thumbnailers-21.08.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kdesdk-thumbnailers-21.08.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/kdesdk-thumbnailers-21.08.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kdesdk-thumbnailers-21.08.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdesdk-thumbnailers/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
